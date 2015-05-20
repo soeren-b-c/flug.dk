@@ -17,4 +17,25 @@ $(function() {
         // the browser's width is less than 600, the fallback will kick in.
         direction: "vertical"            // You can now define the direction of the One Page Scroll animation. Options available are "vertical" and "horizontal". The default value is "vertical".  
     });
+    
+    var request = $.ajax({
+        url: "/calendar/2015-04-30T18:00:00Z",
+        method: "GET",
+        dataType: "json"
+    });
+    request.done(function(data) {
+        calendar.format(data);
+        var cal = calendar.getFirstItem();        
+        if (cal !== null) {
+            $('#next-event').css('display', 'block');
+            $('#next-event-title').text(cal.summary);
+            $('#next-event-desc').text(cal.description);
+            $('#next-event-desc').linkify();
+            $('#next-event-day').text(cal.start.day);
+            $('#next-event-month').text(cal.start.month);
+            $('#next-event-year').text(cal.start.year);
+            $('#next-event-clock').text(cal.start.hour+':'+cal.start.minute);
+        }
+        
+    });
 });

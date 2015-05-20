@@ -5,10 +5,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="Fyns Linux User Group">
-        <link href='http://fonts.googleapis.com/css?family=Mandali|Ubuntu|Oxygen+Mono|Ubuntu+Mono' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Mandali|Ubuntu:300|Oxygen+Mono|Ubuntu+Mono' rel='stylesheet' type='text/css'>
         <link href="styles/main.css" media="all" type="text/css" rel="stylesheet"/>
         <link href="styles/onepage-scroll.css" media="all" type="text/css" rel="stylesheet"/>
         <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery.linkify.min.js"></script>
         <script src="/js/jquery.onepage-scroll.min.js"></script>
         <script src="/js/main.js"></script>
         <script src="/js/calendar.js"></script>
@@ -29,7 +30,7 @@
             </div>
         </header>
         <div class="main" id="main-contents">
-            <section>
+            <section id="sec1">
                 <div id="intro" class="section-contents">
                     <div id="flug-into">
                         <h2>Fyns Linux User Group</h2>
@@ -42,16 +43,21 @@
                             <a href="#">Vil du vide mere <span>?</span></a>
                         </div>
                     </div>
-                    <img id="os-banner" src="/assets/opensource.png" alt="Open Source Community"/>
-                    <div id="next-event">
-                        <span class="small-text">Næste Arrangement</span>
-                        <h3 id="next-event-title"></h3>
-                        <div id="next-event-start">
-                            <span id="next-event-day"></span>
-                            <span>
-                                <span id="next-event-month"></span>
-                                <span id="next-event-year"></span>
-                            </span>
+                    <img id="os-banner" src="/assets/flugwords.png" alt="Open Source Community"/>
+                    <div class="clearfix"></div>
+                    <div id="next-event" class="event-box">
+                        <div class="header">
+                            <div class="calendar-icon">
+                                <img src="/assets/calendar_event_icon.png"/>
+                            </div>
+                            <h3 class="title" id="next-event-title"></h3>
+                        </div>
+                        <div class="time-schedule" id="next-event-start">
+                            <div id="next-event-day"></div>
+                            <div id="next-event-monthyear">
+                                <div id="next-event-month"></div>
+                                <div id="next-event-year"></div>
+                            </div>
                             <div id="next-event-clock"></div>
                         </div>
                         <p id="next-event-desc"></p>
