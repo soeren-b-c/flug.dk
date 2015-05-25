@@ -38,24 +38,6 @@ $.fn.nl2br = function() {
     });
 };
 
-calendar.formatCalendarToHtml = function() {
-    if (calendar.data == null) {
-        return '';
-    }
-    
-    var items = calendar.data.items;
-
-    var calEvents = $('<table/>', {class: 'event-calendar'});
-    for (i = 0; i < items.length; i++) {
-        var item = items[i];
-        $('<tr/>', {}).append(
-            $('<td/>', {text: item.start.year+'/'+item.start.month+'/'+item.start.day})
-        ).appendTo(calEvents);
-    }    
-
-    return calEvents;
-};
-
 calendar.formatEventsToHtml = function(item) {
     var calMain = $('<div/>', {
         class: 'cal-item'

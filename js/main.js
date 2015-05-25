@@ -53,34 +53,22 @@ $(function() {
         var totalHeight = $('#calendar-container').height();
         $('.cal-item').each(function() {
             var elementBottomCoordinate = $(this).position().top + $(this).height();
-//            if (elementBottomCoordinate <= totalHeight || visibleEl < 2) {
-                visibleEl++;
-                if (fade === true) {
-                    $(this).fadeIn('slow')
-                            .css({opacity: 0, visibility: "visible"})
-                            .animate({opacity: 1}, 'slow');
-                } else {
-                    $(this).fadeIn('fast').css({opacity: 1, visibility: "visible"});
-                }
-//            } else {
-//                if (fade === true) {
-//                    $(this).fadeOut('slow');
-//                } else {
-//                    $(this).css({opacity: 0, visibility: "hidden"})
-//                }
-//            }
-            
+            visibleEl++;
+            if (fade === true) {
+                $(this).fadeIn('slow')
+                        .css({opacity: 0, visibility: "visible"})
+                        .animate({opacity: 1}, 'slow');
+            } else {
+                $(this).fadeIn('fast').css({opacity: 1, visibility: "visible"});
+            }
+
         });
     }
 
-//    function displayNextEvent() {
-//        calendar.formatEventsToHtml(calendar.getFirstItem())
-//                .css({display: 'block', opacity: 1, visibility: "visible"})
-//                .appendTo('#next-event-container');
-//    }
-
-    function renderEventCalendar() {
-        calendar.formatCalendarToHtml().appendTo('#next-event-container');
+    function displayNextEvent() {
+        calendar.formatEventsToHtml(calendar.getFirstItem())
+                .css({display: 'block', opacity: 1, visibility: "visible"})
+                .appendTo('#next-event-container');
     }
 
     function fetchCalendar(callback) {
@@ -96,18 +84,18 @@ $(function() {
 
     fetchCalendar(function(status) {
         if (status === true) {
-            renderEventCalendar();
-//            displayNextEvent();
+            displayNextEvent();
         }
     });
 
-//    $(window).resize(function() {
-//        clearTimeout($.data(this, 'resizeTimer'));
-//        $.data(this, 'resizeTimer', setTimeout(function() {
-//            renderCalendar(false);
-//        }, 200));
-//    });
-
-
+    $('.event-link').on('click', function() {
+        $(".main").moveTo(2);
+    });
+    $('.home-link').on('click', function() {
+        $(".main").moveTo(1);
+    });
+    $('.who-link').on('click', function() {
+        $(".main").moveTo(3);
+    });
 
 });

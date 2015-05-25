@@ -183,8 +183,14 @@ p {
     top: 450px;
     bottom: 80px;
     width: 100%;
+    cursor: pointer;
+}
+#next-event-container .cal-item {
+    height: 100%;
+    overflow: hidden;
 }
 #calendar-container {
+    padding-top: 20px;
     display: block;
     position: absolute;
     top: 60px;
@@ -208,6 +214,7 @@ p {
     line-height: 45px;
     padding-left: 65px;
     border-radius: 3px 3px 0 0;
+    margin: 0;
 }
 .cal-item .cal-title-container .cal-icon {
     border-radius: 3px 0 0 0;
@@ -224,7 +231,7 @@ p {
 }
 .cal-item .cal-time-schedule {
     cursor: pointer;
-    margin-top: -55px;
+    margin-top: -40px;
     border-radius: 6px;
     box-shadow: 0 0 5px 2px #888888;
     margin-right: 6px;

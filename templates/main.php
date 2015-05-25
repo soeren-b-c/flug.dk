@@ -19,13 +19,12 @@
         <header id="header-area">
             <div id="header-container">
                 <h1>
-                    <a href="/">flug.dk</a>
+                    <a href="#2" class="home-link">flug.dk</a>
                 </h1>
                 <nav id="navigation">
                     <a href="#">Blog</a>
-                    <a href="#">kategorier</a>
-                    <a href="#">Events</a>
-                    <a href="#">Hvem er vi?</a>
+                    <a href="#2" class="event-link">Events</a>
+                    <a href="#3" class="who-link">Hvem er flug?</a>
                 </nav>
             </div>
         </header>
@@ -40,17 +39,17 @@
                             Alle er velkomne, og medlemsskabet er gratis og uforpligtende.
                         </p>
                         <div id="find-out-more">
-                            <a href="#">Vil du vide mere <span>?</span></a>
+                            <a href="#3" class="who-link">Vil du vide mere <span>?</span></a>
                         </div>
                     </div>
                     <img id="os-banner" src="/assets/flug3.png" alt="Open Source Community"/>
                 </div>
-                <div id="next-event-container"></div>
+                <div id="next-event-container" class="event-link"></div>
                 <div id="intro-bottom">
                     <div id="social-media">
                         <p>
                             Er du interesseret i at komme til et af vores arrangementer, 
-                            så se under <a href="#">events</a>, eller find os på de 
+                            så se under <a class="event-link" href="#2">events</a>, eller find os på de 
                             sociale medier.
                         </p>
                         <div>
