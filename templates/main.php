@@ -43,26 +43,9 @@
                             <a href="#">Vil du vide mere <span>?</span></a>
                         </div>
                     </div>
-                    <img id="os-banner" src="/assets/flugwords.png" alt="Open Source Community"/>
-                    <div class="clearfix"></div>
-                    <div id="next-event" class="event-box">
-                        <div class="header">
-                            <div class="calendar-icon">
-                                <img src="/assets/calendar_event_icon.png"/>
-                            </div>
-                            <h3 class="title" id="next-event-title"></h3>
-                        </div>
-                        <div class="time-schedule" id="next-event-start">
-                            <div id="next-event-day"></div>
-                            <div id="next-event-monthyear">
-                                <div id="next-event-month"></div>
-                                <div id="next-event-year"></div>
-                            </div>
-                            <div id="next-event-clock"></div>
-                        </div>
-                        <p id="next-event-desc"></p>
-                    </div>
+                    <img id="os-banner" src="/assets/flug3.png" alt="Open Source Community"/>
                 </div>
+                <div id="next-event-container"></div>
                 <div id="intro-bottom">
                     <div id="social-media">
                         <p>
@@ -81,8 +64,11 @@
                     </div>
                 </div>
             </section>
-            <section>
-                Section 2
+            <section id="sec2">
+                <div id="calendar-container"></div>
+            </section>
+            <section id="sec3">
+                
             </section>
         </div>
     </body>

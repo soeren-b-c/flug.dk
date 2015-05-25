@@ -20,15 +20,10 @@ class Calendar {
     }
     
     public function getFutureEvents($limit) {
-        $now = time();
-        $ymd = date('Y-m-d', $now);
-        $his = date('H:i:s', $now);
-        $nowTimeFormat = $ymd.'T'.$his.'Z';
-        
-        return $this->getCalendar($nowTimeFormat, $limit);
+        return $this->getCalendar(gmdate("Y-m-d\TH:i:s\Z"), $limit);
     }
     
-    public function getCalendar($datetime, $limit) {
+    public function getCalendar($datetime, $limit) {        
         $queryParam = array(
             'key' => self::API_KEY,
             'singleEvents' => 'true',
@@ -44,7 +39,7 @@ class Calendar {
         if ($status) {
             return $this->curl->responseBody;
         }
-        return '';
+        return '{}';
     }
     
 }

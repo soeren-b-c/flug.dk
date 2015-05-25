@@ -1,4 +1,7 @@
 $(function() {
+    var calendarReady = false;
+    var calendarItemsAdded = false;
+
     $(".main").onepage_scroll({
         sectionContainer: "section", // sectionContainer accepts any kind of selector in case you don't want to use section
         easing: "ease", // Easing options accepts the CSS3 easing animation such "ease", "linear", "ease-in",
@@ -9,6 +12,17 @@ $(function() {
         beforeMove: function(index) {
         }, // This option accepts a callback function. The function will be called before the page moves.
         afterMove: function(index) {
+            if (index == 2) {
+                if (calendarReady) {
+                    addCalendarElements();
+                } else {
+                    fetchCalendar(function(status) {
+                        if (status === true) {
+                            addCalendarElements();
+                        }
+                    });
+                }
+            }
         }, // This option accepts a callback function. The function will be called after the page moves.
         loop: true, // You can have the page loop back to the top/bottom when the user navigates at up/down on the first/last page.
         keyboard: true, // You can activate the keyboard controls
@@ -17,25 +31,83 @@ $(function() {
         // the browser's width is less than 600, the fallback will kick in.
         direction: "vertical"            // You can now define the direction of the One Page Scroll animation. Options available are "vertical" and "horizontal". The default value is "vertical".  
     });
-    
-    var request = $.ajax({
-        url: "/calendar/2015-04-30T18:00:00Z",
-        method: "GET",
-        dataType: "json"
-    });
-    request.done(function(data) {
-        calendar.format(data);
-        var cal = calendar.getFirstItem();        
-        if (cal !== null) {
-            $('#next-event').css('display', 'block');
-            $('#next-event-title').text(cal.summary);
-            $('#next-event-desc').text(cal.description);
-            $('#next-event-desc').linkify();
-            $('#next-event-day').text(cal.start.day);
-            $('#next-event-month').text(cal.start.month);
-            $('#next-event-year').text(cal.start.year);
-            $('#next-event-clock').text(cal.start.hour+':'+cal.start.minute);
+
+    function addCalendarElements() {
+        if (calendarItemsAdded) {
+            return;
         }
         
+        var calAll = calendar.getData();        
+        for (i = 0; i < calAll.items.length; i++) {
+            if (i >= 10) {
+                break;
+            }
+            calendar.formatEventsToHtml(calAll.items[i]).appendTo('#calendar-container');
+        }
+        renderCalendar(true);
+        calendarItemsAdded = true;
+    }
+
+    function renderCalendar(fade) {
+        var visibleEl = 0;
+        var totalHeight = $('#calendar-container').height();
+        $('.cal-item').each(function() {
+            var elementBottomCoordinate = $(this).position().top + $(this).height();
+//            if (elementBottomCoordinate <= totalHeight || visibleEl < 2) {
+                visibleEl++;
+                if (fade === true) {
+                    $(this).fadeIn('slow')
+                            .css({opacity: 0, visibility: "visible"})
+                            .animate({opacity: 1}, 'slow');
+                } else {
+                    $(this).fadeIn('fast').css({opacity: 1, visibility: "visible"});
+                }
+//            } else {
+//                if (fade === true) {
+//                    $(this).fadeOut('slow');
+//                } else {
+//                    $(this).css({opacity: 0, visibility: "hidden"})
+//                }
+//            }
+            
+        });
+    }
+
+//    function displayNextEvent() {
+//        calendar.formatEventsToHtml(calendar.getFirstItem())
+//                .css({display: 'block', opacity: 1, visibility: "visible"})
+//                .appendTo('#next-event-container');
+//    }
+
+    function renderEventCalendar() {
+        calendar.formatCalendarToHtml().appendTo('#next-event-container');
+    }
+
+    function fetchCalendar(callback) {
+        calendar.fetch('', function(status) {
+            if (status === true) {
+                calendarReady = true;
+                callback(true);
+            } else {
+                callback(false);
+            }
+        });
+    }
+
+    fetchCalendar(function(status) {
+        if (status === true) {
+            renderEventCalendar();
+//            displayNextEvent();
+        }
     });
+
+//    $(window).resize(function() {
+//        clearTimeout($.data(this, 'resizeTimer'));
+//        $.data(this, 'resizeTimer', setTimeout(function() {
+//            renderCalendar(false);
+//        }, 200));
+//    });
+
+
+
 });

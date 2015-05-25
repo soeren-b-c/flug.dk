@@ -23,7 +23,7 @@ $app->get('/calendar/:timeMin', function ($timeMin) use ($app) {
     echo $nextEvent;
 });
 
-$app->get('/calendar/', function () use ($app) {
+$app->get('/calendar', function () use ($app) {
     $app->contentType('application/json; charset=utf-8');
     $calendar = new \Libs\Calendar();
     $limit = $paramValue = $app->request->get('limit');

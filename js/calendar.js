@@ -1,6 +1,26 @@
 var calendar = Object();
 calendar.data = null;
 
+calendar.fetch = function(dateFrom, callback) {
+    var dateNow = new Date().toISOString();
+    if (dateFrom !== '') {
+        dateNow = dateFrom;
+    }
+    
+    var request = $.ajax({
+        url: "/calendar/2013-04-30T18:00:00Z",
+        method: "GET",
+        dataType: "json"
+    });
+    request.done(function(data) {
+        calendar.format(data);
+        callback(true);
+    });
+    request.fail(function() {
+        callback(false);
+    });
+};
+
 calendar.getData = function() {
     return calendar.data;
 };
@@ -12,11 +32,56 @@ calendar.getFirstItem = function() {
     return null;
 };
 
-calendar.format = function(data) {
-    var formatDescription = function(text) {
-        
+$.fn.nl2br = function() {
+    return this.each(function() {
+        $(this).html($(this).text().replace(/\n/g,"<br/>"));
+    });
+};
+
+calendar.formatCalendarToHtml = function() {
+    if (calendar.data == null) {
+        return '';
     }
     
+    var items = calendar.data.items;
+
+    var calEvents = $('<table/>', {class: 'event-calendar'});
+    for (i = 0; i < items.length; i++) {
+        var item = items[i];
+        $('<tr/>', {}).append(
+            $('<td/>', {text: item.start.year+'/'+item.start.month+'/'+item.start.day})
+        ).appendTo(calEvents);
+    }    
+
+    return calEvents;
+};
+
+calendar.formatEventsToHtml = function(item) {
+    var calMain = $('<div/>', {
+        class: 'cal-item'
+    }).append(
+        $('<div/>', {class: 'cal-title-container'}).append(
+            $('<div/>', {class: 'cal-icon'}).append(
+                $('<img/>', {src: '/assets/calendar_event_icon.png'})
+            ),
+            $('<h3/>', {class: 'cal-header', text: item.summary})
+        ),
+        $('<div/>', {class: 'cal-time-schedule'}).on('click', function(){
+            window.open(item.htmlLink, '_blank');
+        }).append(
+            $('<div/>', { class: 'event-day', text: item.start.day}),
+            $('<div/>', {class: 'event-monthyear'}).append(
+                $('<div/>', {class: 'event-month', text: item.start.month}),
+                $('<div/>', {class: 'event-year', text: item.start.year})
+            ),
+            $('<div/>', {class: 'event-clock', text: item.start.hour + ':' + item.start.minute})
+        ),
+        $('<p/>', {text: item.description}).nl2br().linkify()
+    );
+    return calMain;
+}
+
+calendar.format = function(data) {
     var formatMonth = function(month) {
         switch (month) {
             case 0: return 'Jan';
@@ -36,14 +101,16 @@ calendar.format = function(data) {
     };
     
     var padNumberStr = function(num) {
-        if (num.length == 1) {
+        if (num < 10) {
             return "0"+num;
         }
         return num.toString();
     }
     
+    var count = 0;
     if (typeof data.items !== 'undefined') {
         for (i = 0; i < data.items.length; i++) {
+            count++;
 
             if (typeof data.items[i].summary === 'undefined' || data.items[i].summary === '') {
                 data.items[i].summary = 'Ingen titel';
@@ -51,6 +118,7 @@ calendar.format = function(data) {
             if (typeof data.items[i].description === 'undefined' || data.items[i].description === '') {
                 data.items[i].description = 'Ingen beskrivelse';
             }
+
             if (typeof data.items[i].start === 'undefined' || typeof data.items[i].start.dateTime === 'undefined') {
                 data.items[i].start = {};
                 data.items[i].start.dateTime = '';
@@ -93,7 +161,7 @@ calendar.format = function(data) {
             }
 
         }
-        
+        data.count = count;
         calendar.data = data;
     }
 };
