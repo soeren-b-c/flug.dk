@@ -67,7 +67,48 @@
                 <div id="calendar-container"></div>
             </section>
             <section id="sec3">
-                
+                <h1>Om flug</h1>
+                <footer id="footer">
+                    <div id="footer-container">
+                        <div id="footer-nav">
+                            <h4>Navigation</h4>
+                            <ul id="site-links" class="list-line">
+                                <li><a class="home-link" href="#1">flug.dk</a></li>
+                                <li>/</li>
+                                <li><a href="#">Blog</a></li>
+                                <li>/</li>
+                                <li><a class="event-link" href="#2">Events</a></li>
+                                <li>/</li>
+                                <li><a class="who-link" href="#3">Hvem er flug?</a></li>
+                            </ul>
+                        </div>
+                        <div id="footer-findus">
+                            <h4>Find os</h4>
+                            <ul id="social-links" class="list-line">
+                                <li>
+                                    <a href="https://www.facebook.com/groups/flug.dk" target="_blank">
+                                        <img height="30" src="/assets/fb_icon.png" alt="FB"/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.facebook.com/groups/flug.dk" target="_blank">
+                                        Facebook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://plus.google.com/communities/105454146240712904444" target="_blank">
+                                        <img height="30" src="/assets/googleplus_icon.png" alt="GP"/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://plus.google.com/communities/105454146240712904444" target="_blank">
+                                        Google+
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
             </section>
         </div>
     </body>
