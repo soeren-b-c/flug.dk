@@ -349,4 +349,21 @@ ul#social-links li {
     width: 960px;
     margin: 0 auto;
     position: relative;
+    top: 100px;
+}
+#who-container h2 {
+    font-size: 30px;
+    margin: 0 0 20px;
+    color: #fff;
+}
+#who-container #about {
+    color: #5a5a5a;
+    margin: 0;
+    background-color: rgba(248, 247, 247, 0.7);
+    padding: 3px 12px;
+}
+#who-container #about p {
+    font-size: 20px;
+    line-height: 27px;
+    margin: 10px;
 }
