@@ -301,7 +301,7 @@ p {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 100px;
+    height: 130px;
     border-top: 2px solid #29abe1;
     color: #5a5a5a;
 }
@@ -320,6 +320,7 @@ p {
 #footer #footer-container #footer-nav {
     border-right: 1px solid #c9c9c9;
     width: 50%;
+    height: 80px;
 }
 #footer #footer-container #footer-findus {
     margin-left: 30px;
@@ -366,4 +367,73 @@ ul#social-links li {
     font-size: 20px;
     line-height: 27px;
     margin: 10px;
+}
+#blog-contents {
+    background: url(/assets/bg9.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    bottom: 0;
+}
+#blog-container {
+    width: 960px;
+    margin: 0 auto;
+    position: relative;
+    top: 100px;
+}
+#blog-container .box {
+    background-color: #F8F7F7;
+    margin: 0 0 20px 0;
+    min-height: 250px;
+}
+#blog-container .post {
+    padding: 20px;
+}
+#blog-container .post a {
+    text-decoration: none;
+}
+#blog-container .post .thumbnail {
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    margin: 0 20px 10px 0;
+    padding: 4px;
+}
+#blog-container .post .meta {
+    margin: 0;
+    line-height: 16px;
+}
+#blog-container .post .meta .cat {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+#blog-container .post h2 {
+    margin: 0;
+    font-size: 24px;
+}
+#blog-container .post h2 a {
+    color: #333333;
+}
+#blog-container .post .meta-post {
+    font-size: 12px;
+    color: #5E5E5E;
+    line-height: 12px;
+}
+.alignleft {
+    float: left;
+    width: auto;
+}
+.link-btn1 {
+    background: none repeat scroll 0 0 #3c96a5;
+    transition: background-color 0.2s ease 0s;
+    text-decoration: none;
+    font-size: 12px;
+    color: #fff;
+    padding: 5px 10px 5px 10px;
+    border-radius: 3px;
+}
+.link-btn1:hover {
+    background-color: #2a7d8b;
+    color: #fff;
 }

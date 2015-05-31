@@ -1,6 +1,6 @@
 <?php
 namespace Libs;
-require 'Curl.php';
+require_once 'Curl.php';
 
 /**
  * @see https://developers.google.com/google-apps/calendar/v3/reference/events/list#try-it

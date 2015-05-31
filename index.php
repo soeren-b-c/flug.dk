@@ -1,6 +1,7 @@
     <?php
 require 'vendor/autoload.php';
 require 'libs/Calendar.php';
+require 'libs/Blog.php';
 
 $app = new \Slim\Slim();
 $app = new \Slim\Slim(array(
@@ -11,8 +12,16 @@ $app = new \Slim\Slim(array(
 $app->contentType('text/html; charset=utf-8');
 
 $app->get('/', function () use ($app) {
-    $var = $app->view()->fetch('my_template.php', array('key' => 'sdfsdf'));
-    $app->render('main.php', array());
+    $header = $app->view()->fetch('header.php', array());
+    $footer = $app->view()->fetch('footer.php', array());
+    $app->render('main.php', array('header' => $header, 'footer' => $footer));
+});
+
+$app->get('/blog', function () use ($app) {
+    $blog = new \Libs\Blog();
+    $header = $app->view()->fetch('header.php', array());
+    $footer = $app->view()->fetch('footer.php', array());
+    $app->render('blog.php', array('header' => $header, 'footer' => $footer, 'blog' => $blog));
 });
 
 $app->get('/calendar/:timeMin', function ($timeMin) use ($app) {
