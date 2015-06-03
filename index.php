@@ -12,16 +12,14 @@ $app = new \Slim\Slim(array(
 $app->contentType('text/html; charset=utf-8');
 
 $app->get('/', function () use ($app) {
-    $header = $app->view()->fetch('header.php', array());
-    $footer = $app->view()->fetch('footer.php', array());
-    $app->render('main.php', array('header' => $header, 'footer' => $footer));
+    $search = $app->view()->fetch('search.php', array());
+    $app->render('main.php', array('searchField' => $search));
 });
 
 $app->get('/blog', function () use ($app) {
     $blog = new \Libs\Blog();
-    $header = $app->view()->fetch('header.php', array());
-    $footer = $app->view()->fetch('footer.php', array());
-    $app->render('blog.php', array('header' => $header, 'footer' => $footer, 'blog' => $blog));
+    $search = $app->view()->fetch('search.php', array());
+    $app->render('blog.php', array('blog' => $blog, 'searchField' => $search));
 });
 
 $app->get('/calendar/:timeMin', function ($timeMin) use ($app) {
