@@ -308,6 +308,8 @@ p {
     height: 130px;
     border-top: 2px solid #29abe1;
     color: #5a5a5a;
+    position: absolute;
+    bottom: 0;
 }
 #footer h4 {
     color: #29ABE1;
@@ -380,6 +382,7 @@ ul#social-links li {
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100%;
+    position: relative;
 }
 #blog-container {
     width: 960px;
@@ -484,4 +487,7 @@ ul#social-links li {
     border-radius: 3px;
     width: 0;
     visibility: hidden;
+}
+.blogspacer {
+    height: 150px;
 }

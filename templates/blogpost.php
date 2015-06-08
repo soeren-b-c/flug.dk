@@ -19,6 +19,7 @@
     </head>
     <body>
 <?php
+$meta = $blog->getMetadata($postTitle);
 $articles = $blog->getArticles();
 ?>
         <header id="header-area">
@@ -38,24 +39,23 @@ $articles = $blog->getArticles();
             <div id="blog-container">
                 <div id="spacer"></div>
                 <?php 
-                if ($articles != null) {
-                foreach ($articles->asciidoc as $article) { 
-                    $date = new DateTime($article->created);
+                if ($meta != null) {
+                    $date = new DateTime($meta->created);
                     $created = $date->format('Y-m-d H:i:s');
-                    $doc = $blog->getArticle($article->title);
+                    $doc = $blog->getArticle($meta->title);
                 ?>
                 <div class="box">
                     <div class="post">
                         <a href="#" title="#">
-                            <img class="thumbnail alignleft" src="assets/default_thumb.png" alt="#"/>
+                            <img class="thumbnail alignleft" src="/assets/default_thumb.png" alt="#"/>
                         </a>
                         <div class="text">
                             <p class="meta">
                                 <span class="cat">
                                     <?php 
-                                    $numCat = count($article->categories);
+                                    $numCat = count($meta->categories);
                                     $i = 1;
-                                    foreach ($article->categories as $cat) {
+                                    foreach ($meta->categories as $cat) {
                                     ?>
                                     <a title="" href="#"><?php echo $cat->name; ?></a>
                                     <?php 
@@ -70,7 +70,7 @@ $articles = $blog->getArticles();
                                 </span>
                             </p>
                             <h2>
-                                <a href="#" title="#"><?php echo $article->title; ?></a>
+                                <a href="#" title="#"><?php echo $meta->title; ?></a>
                             </h2>
                             <p class="meta-post">
                                 Jimmi Kristensen 
@@ -79,10 +79,6 @@ $articles = $blog->getArticles();
                             <div class="entry">
                                 <?php echo $doc; ?>
                                 <p>Patience is one tough lady: after 13 years in development, free 2D vector-based animation application Synfig Studio finally gets the golden badge of v1.0, delivering a sleigh of improvements and new features.</p>
-                                <div class="box-end"></div>
-                                <span class="read-more">
-                                    <a class="link-btn1" href="/blog/<?php echo $article->title; ?>">Vis mere</a>
-                                </span>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -90,10 +86,8 @@ $articles = $blog->getArticles();
                 </div>
                 <?php 
                 }
-                }
                 ?>
             </div>
-            <div class="blogspacer"></div>
             <footer id="footer">
                 <div id="footer-container">
                     <div id="footer-nav">

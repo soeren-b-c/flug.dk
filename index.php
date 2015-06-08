@@ -22,6 +22,12 @@ $app->get('/blog', function () use ($app) {
     $app->render('blog.php', array('blog' => $blog, 'searchField' => $search));
 });
 
+$app->get('/blog/:postTitle', function ($postTitle) use ($app) {
+    $blog = new \Libs\Blog();
+    $search = $app->view()->fetch('search.php', array());
+    $app->render('blogpost.php', array('blog' => $blog, 'searchField' => $search, 'postTitle' => $postTitle));
+});
+
 $app->get('/calendar/:timeMin', function ($timeMin) use ($app) {
     $app->contentType('application/json; charset=utf-8');
     $calendar = new \Libs\Calendar();

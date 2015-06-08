@@ -25,6 +25,20 @@ class Blog {
         if ($status) {
             return $this->curl->responseBody;
         }
+        return '';
+    }
+    
+    public function getMetadata($title) {
+        $queryParam = array(
+            'apikey' => self::API_KEY
+        );
+        
+        $url = self::BLOG_API_URL.'/asciidoc/'.rawurlencode($title).'/metadata';
+        $status = $this->curl->get($url, $queryParam);
+        if ($status) {
+            return json_decode($this->curl->responseBody);
+        }
+        return '{}';
     }
     
     public function getArticles() {
@@ -39,6 +53,7 @@ class Blog {
         if ($status) {
             return json_decode($this->curl->responseBody);
         }
+        return '{}';
     }
     
 }
