@@ -8,7 +8,7 @@ calendar.fetch = function(dateFrom, callback) {
     }
     
     var request = $.ajax({
-        url: "/calendar/2013-04-30T18:00:00Z",
+        url: "/calendar",
         method: "GET",
         dataType: "json"
     });
