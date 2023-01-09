@@ -7,7 +7,7 @@ require_once 'Curl.php';
  */
 class Calendar {
     
-    const CALENDAR_ID = 'post%40flug.dk';
+    const CALENDAR_ID = 'dkflug%40gmail.com';
     const API_KEY = 'AIzaSyCvZUhnHYbcjJ41X62vJ9ulB3iCVjOVkJ4';
     const GOOGLE_CALENDAR_URL = 'https://www.googleapis.com/calendar/v3/calendars';
     
