@@ -98,8 +98,6 @@
                             <ul id="site-links" class="list-line">
                                 <li><a class="home-link" href="#1">flug.dk</a></li>
                                 <li>/</li>
-                                <li><a href="/blog">Blog</a></li>
-                                <li>/</li>
                                 <li><a class="event-link" href="#2">Events</a></li>
                                 <li>/</li>
                                 <li><a class="who-link" href="#3">Hvem er flug?</a></li>
