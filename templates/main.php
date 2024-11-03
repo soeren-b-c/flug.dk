@@ -25,7 +25,6 @@
                 
                 <nav id="navigation">
                     <?php echo $searchField; ?>
-                    <a href="/blog">Blog</a>
                     <a href="#2" class="event-link">Events</a>
                     <a href="#3" class="who-link">Hvem er flug?</a>
                 </nav>
@@ -58,9 +57,6 @@
                         <div>
                             <a href="https://www.facebook.com/groups/flug.dk" target="_blank">
                                 <img src="/assets/fb_icon.png" alt="FB"/>
-                            </a>
-                            <a href="https://plus.google.com/communities/105454146240712904444" target="_blank">
-                                <img src="/assets/googleplus_icon.png" alt="GP"/>
                             </a>
                         </div>
                     </div>
@@ -120,16 +116,6 @@
                                 <li>
                                     <a href="https://www.facebook.com/groups/flug.dk" target="_blank">
                                         Facebook
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://plus.google.com/communities/105454146240712904444" target="_blank">
-                                        <img height="30" src="/assets/googleplus_icon.png" alt="GP"/>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://plus.google.com/communities/105454146240712904444" target="_blank">
-                                        Google+
                                     </a>
                                 </li>
                             </ul>
